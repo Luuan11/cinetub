@@ -1,10 +1,16 @@
 :root{
-  --fonte: "Roboto", Arial, sans-serif,
+  --fonte: "Roboto", Arial, sans-serif;
+
+  --PrimaryColor: purple;
+  --White: #ffffff,
+  --Preto: #000,
+
 }
 
 body {
   margin: 0;
   font-family: var(--fonte);
+  background-color: var(--White);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
