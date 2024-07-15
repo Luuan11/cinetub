@@ -1,0 +1,10 @@
+.footer{
+    display: flex;
+    justify-content: center;
+}
+
+.footer h2{
+    font-weight: 400;
+    font-size: 18px;
+    
+}
