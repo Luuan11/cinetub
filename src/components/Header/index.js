@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
-import styles from "./Header.module.css";
 import HeaderLink from "components/HeaderLink";
+
+import styles from "./Header.module.css";
 
 function Header() {
     return (
