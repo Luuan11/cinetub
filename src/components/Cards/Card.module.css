@@ -1,0 +1,28 @@
+.card {
+    padding: 0 0 1em 0;
+    margin: .5em;
+    width: 280px;
+    background-color: rgb(87, 133, 218);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border: 1.7px solid rgb(87, 133, 218);
+    border-radius: 10px;
+}
+
+.capa{
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.card h2, 
+.favorite{
+    padding: 0 1em;
+}
+
+.favorite{
+    width: 15px;
+}
