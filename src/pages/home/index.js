@@ -9,15 +9,19 @@ import styles from "./Home.module.css";
 function Home() {
   return (
     <>
-      <Banner image="home" />
+
+        <Banner image="home" />
+
         <Title>
             <h1>Local perfeito para seus videos especiais!</h1>
         </Title>
+
         <section className={styles.videoContainer}>
             {videos.map((video) => {
             return <Cards {...video} key={video.id} />;
             })}
         </section>
+
     </>
   );
 }
