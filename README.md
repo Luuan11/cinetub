@@ -2,4 +2,5 @@
 - using react
 - using routes
 
-made by Luuan
+---
+Made with 💜 by [Luan Fernando](https://www.linkedin.com/in/luan-fernando/).
