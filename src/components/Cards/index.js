@@ -4,7 +4,7 @@ import iconFavorite from './favorite.png'
 import iconDisfavorite from "./unfavorite.png"
 
 function Cards({ id, title, capa }) {
-    const { favorite, addFavorite } = useFavoriteContext();
+    const { favorite, addFav } = useFavoriteContext();
     const isFavorite = favorite.some((fav) => fav.id === id)
     const icon = !isFavorite ? iconFavorite : iconDisfavorite;
     return (
@@ -15,7 +15,7 @@ function Cards({ id, title, capa }) {
                  alt="Favorite video" 
                  className={styles.favorite}
                  onClick={() => {
-                    addFavorite({ id, title, capa })
+                    addFav({ id, title, capa })
                  }}/>
         </div>
     )
