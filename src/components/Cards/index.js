@@ -12,7 +12,7 @@ function Cards({ id, title, capa }) {
             <img src={capa} alt={title} className={styles.capa}/>
             <h2>{title}</h2>
             <img src={icon} 
-                 alt="Favorite video" 
+                 alt="Favorite video"
                  className={styles.favorite}
                  onClick={() => {
                     addFav({ id, title, capa })
