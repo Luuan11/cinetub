@@ -1,6 +1,8 @@
 .banner {
-    width: 100%;
+    width: 65%;
     height: 347px;
     background-repeat: no-repeat;
     background-size: cover;
+    margin: auto;
+    border-radius: 8px;
 }
