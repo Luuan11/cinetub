@@ -19,7 +19,7 @@ function AppRoutes() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/favorite" element={<Favorites />}></Route>
-            <Route path="/player" element={<Player />}></Route>
+            <Route path="/:id" element={<Player />}></Route>
           </Routes>
         </FavoritesProvider>
       </Container>
