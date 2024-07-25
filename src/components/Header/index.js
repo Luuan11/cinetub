@@ -10,8 +10,8 @@ function Header() {
             <Link to="./">
                 <img src={logo} alt="logo" />
             </Link>
-            <nav>
-                <HeaderLink url="./">
+            <nav className={styles.nav}>
+                <HeaderLink url="./" >
                     Home
                 </HeaderLink>
 
