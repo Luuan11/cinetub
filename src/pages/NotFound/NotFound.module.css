@@ -1,4 +1,28 @@
 .notFound{
     height: 63.5vh;
     margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divnot{
+    padding: 2em 5em;
+    margin-bottom: 25px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+    transition: .3s ease;
+}
+
+.divnot:hover{
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
+
+.divnot h2{
+    font-size: 28px;
+    text-transform: uppercase;
 }
