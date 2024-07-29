@@ -1,4 +1,6 @@
-# Techs
+# Sobre
+
+# Tecologia usadas
 - Using react
 - Using routes
 - Hooks
