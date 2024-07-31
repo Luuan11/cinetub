@@ -1,8 +1,8 @@
 import Container from "components/Container"
-import styles from "./BasePage.module.css"
 import FavoritesProvider from "Context/Favorite";
 import { Outlet } from "react-router-dom";
 import Header from "components/Header";
+import Footer from "components/Footer";
 
 function BasePage() {
     return (
@@ -13,6 +13,7 @@ function BasePage() {
                     <Outlet />
                 </Container>
             </FavoritesProvider>
+            <Footer />
         </main>
     )
 }

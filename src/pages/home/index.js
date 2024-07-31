@@ -18,9 +18,7 @@ function Home() {
 
   return (
     <>
-
         <Banner image="home" />
-
         <Title>
             <h1>Local perfeito para seus videos especiais!</h1>
         </Title>
