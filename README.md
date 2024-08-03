@@ -1,6 +1,9 @@
-# Sobre
+# Cinetub
 
-# Tecologia usadas
+### Sobre
+- Web page exibindo videos consumindo uma api externa
+
+### Tecnologia usadas
 - Using react
 - Using routes
 - Hooks
