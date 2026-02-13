@@ -1,10 +1,17 @@
-import styles from './Title.module.css'
+import { memo } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Title.module.css';
 
-function Title( {children} ) {
-    return (
-        <div className={styles.text}>
-            {children}
-        </div>
-    )
+function Title({ children }) {
+  return (
+    <div className={styles.text}>
+      {children}
+    </div>
+  );
 }
-export default Title;
+
+Title.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default memo(Title);

@@ -1,35 +1,38 @@
 import Banner from "components/Banner";
 import Title from "components/Title";
 import Cards from "components/Cards";
+import Loading from "components/Loading";
+import ErrorMessage from "components/ErrorMessage";
+import { useFetch } from "hooks/useFetch";
+import { API_ENDPOINTS } from "utils/constants";
 
 import styles from "./Home.module.css";
-import { useEffect, useState } from "react";
 
 function Home() {
-  const [videos, setVideos] = useState([]);
-
-  useEffect(() => {
-    fetch('https://my-json-server.typicode.com/luuan11/cinetub-api/videos')
-    .then(res => res.json())
-    .then(dados => [
-      setVideos(dados)
-    ])
-  }, [])
+  const { data: videos, loading, error, refetch } = useFetch(API_ENDPOINTS.VIDEOS);
 
   return (
     <>
-        <Banner image="home" />
-        <Title>
-            <h1>Local perfeito para seus videos especiais!</h1>
-        </Title>
+      <Banner image="home" />
+      <Title>
+        <h1>The perfect place for your special videos!</h1>
+      </Title>
 
+      {loading && <Loading />}
+
+      {error && <ErrorMessage message={error} onRetry={refetch} />}
+
+      {!loading && !error && videos && (
         <section className={styles.videoContainer}>
-            {videos.map((video) => {
-            return <Cards {...video} key={video.id} />;
-            })}
+          {videos.length > 0 ? (
+            videos.map((video) => <Cards {...video} key={video.id} />)
+          ) : (
+            <p className={styles.emptyMessage}>No videos available at this time.</p>
+          )}
         </section>
-
+      )}
     </>
   );
 }
+
 export default Home;

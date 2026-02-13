@@ -1,38 +1,54 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useCallback } from "react";
+import PropTypes from "prop-types";
+import { useLocalStorage } from "hooks/useLocalStorage";
+import { STORAGE_KEYS } from "utils/constants";
 
-export const FavoritosContext = createContext();
+export const FavoritesContext = createContext();
 
-FavoritosContext.displayName = "Favorites";
+FavoritesContext.displayName = "Favorites";
 
-export default function FavoritesProvider({ children }){
-    const [favorite, setFavorite] = useState([]);
+export default function FavoritesProvider({ children }) {
+  const [favorites, setFavorites] = useLocalStorage(STORAGE_KEYS.FAVORITES, []);
 
-    return(
-        <FavoritosContext.Provider
-            value={{favorite, setFavorite}}>
-            {children}
-        </FavoritosContext.Provider>
-    )
+  return (
+    <FavoritesContext.Provider value={{ favorites, setFavorites }}>
+      {children}
+    </FavoritesContext.Provider>
+  );
 }
 
+FavoritesProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export function useFavoriteContext() {
-    const { favorite, setFavorite} = useContext(FavoritosContext);
+  const context = useContext(FavoritesContext);
 
-    function addFav(newFavorite){
-        const repeatFav = favorite.some(item => item.id === newFavorite)
+  if (!context) {
+    throw new Error("useFavoriteContext must be used within FavoritesProvider");
+  }
 
-        let newList = [...favorite];
+  const { favorites, setFavorites } = context;
 
-        if(!repeatFav){
-            newList.push(newFavorite);
-            return setFavorite(newList);
-        }
+  const toggleFavorite = useCallback((video) => {
+    setFavorites((prevFavorites) => {
+      const isFavorite = prevFavorites.some((fav) => fav.id === video.id);
 
-        newList = favorite.filter((fav) => fav.id !== newFavorite.id);
+      if (isFavorite) {
+        return prevFavorites.filter((fav) => fav.id !== video.id);
+      }
 
-        return setFavorite(newList);
-    }
-    return{
-        favorite, addFav
-    }
+      return [...prevFavorites, video];
+    });
+  }, [setFavorites]);
+
+  const isFavorite = useCallback((videoId) => {
+    return favorites.some((fav) => fav.id === videoId);
+  }, [favorites]);
+
+  return {
+    favorites,
+    toggleFavorite,
+    isFavorite,
+  };
 }

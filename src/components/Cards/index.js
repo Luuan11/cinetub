@@ -1,26 +1,43 @@
-import { useFavoriteContext } from 'Context/Favorite';
-import styles from './Card.module.css'
-import iconFavorite from './favorite.png'
-import iconDisfavorite from "./unfavorite.png"
+import { memo } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useFavoriteContext } from 'Context/Favorite';
+import styles from './Card.module.css';
+import iconFavorite from './favorite.png';
+import iconDisfavorite from './unfavorite.png';
 
-function Cards({ id, title, capa }) {
-    const { favorite, addFav } = useFavoriteContext();
-    const isFavorite = favorite.some((fav) => fav.id === id)
-    const icon = !isFavorite ? iconFavorite : iconDisfavorite;
-    return (
-        <div className={styles.card}>
-            <Link className={styles.link} to={`/${id}`}>
-                <img src={capa} alt={title} className={styles.capa}/>
-                <h2>{title}</h2>
-            </Link>
-            <img src={icon} 
-                 alt="Favorite video"
-                 className={styles.favorite}
-                 onClick={() => {
-                    addFav({ id, title, capa })
-                 }}/>
-        </div>
-    )
+function Card({ id, title, capa }) {
+  const { isFavorite, toggleFavorite } = useFavoriteContext();
+  const isVideoFavorite = isFavorite(id);
+  const icon = isVideoFavorite ? iconDisfavorite : iconFavorite;
+  const altText = isVideoFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
+
+  const handleFavoriteClick = () => {
+    toggleFavorite({ id, title, capa });
+  };
+
+  return (
+    <article className={styles.card}>
+      <Link className={styles.link} to={`/${id}`} aria-label={`Assistir ${title}`}>
+        <img src={capa} alt={title} className={styles.capa} loading="lazy" />
+        <h2>{title}</h2>
+      </Link>
+      <button
+        className={styles.favoriteButton}
+        onClick={handleFavoriteClick}
+        aria-label={altText}
+        type="button"
+      >
+        <img src={icon} alt={altText} className={styles.favorite} />
+      </button>
+    </article>
+  );
 }
-export default Cards;
+
+Card.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  title: PropTypes.string.isRequired,
+  capa: PropTypes.string.isRequired,
+};
+
+export default memo(Card);
