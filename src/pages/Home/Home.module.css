@@ -1,4 +1,29 @@
 .videoContainer {
-    display: flex;
-    justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.emptyMessage {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .videoContainer {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

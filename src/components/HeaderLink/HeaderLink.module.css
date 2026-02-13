@@ -1,8 +1,35 @@
 .link {
-    color: var(--Black);
-    font-size: 18px;
-    font-weight: 400;
-    padding: 1em;
-    text-decoration: none;
+  color: var(--Black);
+  font-size: 18px;
+  font-weight: 400;
+  padding: 1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
 
+.link:hover {
+  color: var(--PrimaryColor);
+  transform: translateY(-2px);
+}
+
+.link:focus {
+  outline: 2px solid var(--PrimaryColor);
+  outline-offset: 4px;
+}
+
+.link.active {
+  color: var(--PrimaryColor);
+  font-weight: 600;
+}
+
+.link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0.5em;
+  left: 1em;
+  right: 1em;
+  height: 3px;
+  background-color: var(--PrimaryColor);
+  border-radius: 2px;
 }

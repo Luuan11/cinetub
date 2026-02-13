@@ -1,40 +1,82 @@
 .card {
-    padding: 0 0 2em 0;
-    margin: .5em;
-    width: 280px;
-    background-color: rgb(117, 66, 221);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    border: 1.7px solid rgb(181, 155, 207);
-    border-radius: 8px;
-    transition: .2s;
-
-    cursor: pointer;
+  padding: 0;
+  margin: 0.5em;
+  width: 280px;
+  background-color: rgb(117, 66, 221);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1.7px solid rgb(181, 155, 207);
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.card:hover{
-    transform: scale(1.1);
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(117, 66, 221, 0.3);
 }
 
-.capa{
+.capa {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.link {
+  text-decoration: none;
+  text-align: left;
+  color: #fafafa;
+  flex: 1;
+}
+
+.card h2 {
+  padding: 1em;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  min-height: 60px;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.favoriteButton:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.favorite {
+  width: 24px;
+  height: 24px;
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.favorite:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .card {
     width: 100%;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    max-width: 280px;
+  }
 }
 
-.card h2, 
-.favorite{
-    padding: 0 1em;
-}
-
-.favorite{
-    width: 20px;
-}
-
-.link{
-    text-decoration: none;
-    text-align: left;
-    color: #fafafa;
+@media (max-width: 480px) {
+  .card {
+    margin: 0;
+  }
 }
